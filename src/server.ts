@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import * as http from 'http';
+import cors from 'cors';
 import routes from './routes';
 
 export default class SetupServer {
@@ -20,13 +21,12 @@ export default class SetupServer {
   private setupExpress(): void {
     this.middlewares();
     this.routes();
-    // this.app.use(bodyParser.json());
-    // this.app.use(expressPino({ logger }));
-    // this.app.use(cors({ origin: '*', optionsSuccessStatus: 200 }));
   }
 
   private middlewares(): void {
     // Body parsing Middleware
+    this.app.use(cors({ origin: '*', optionsSuccessStatus: 200 }));
+    // this.app.use(expressPino({ logger }));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
