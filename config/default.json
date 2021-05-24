@@ -19,8 +19,8 @@
     },
     "passport": {
       "google": {
-        "clientId": "81483236310-j50jcb9v374tnlh1rp8tj0p48ccdugvk.apps.googleusercontent.com",
-        "clientSecret": "ccabRaI_uC8I7eMjHEb_fEcC"
+        "clientId": "clientId",
+        "clientSecret": "clientSecret"
       }
     },
     "logger": {
