@@ -1,9 +1,6 @@
-// import dotenv from 'dotenv-safe';
 import config from 'config';
 import logger from './loaders/logger';
 import SetupServer from './server';
-
-// dotenv.config();
 
 enum ExitStatus {
   Failure = 1,
