@@ -39,6 +39,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
+    'class-methods-use-this': 'off',
     // 'no-useless-constructor': 'off',
     // '@typescript-eslint/no-useless-constructor': ['error'],
   },

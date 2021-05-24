@@ -4,6 +4,7 @@ import cors from 'cors';
 import expressPino from 'express-pino-logger';
 import routes from './routes';
 import logger from './loaders/logger';
+import * as database from '@src/loaders/database';
 
 export default class SetupServer {
   private server?: http.Server;
@@ -18,11 +19,16 @@ export default class SetupServer {
 
   public async init(): Promise<void> {
     this.setupExpress();
+    await this.setupDatabase();
   }
 
   private setupExpress(): void {
     this.middlewares();
     this.routes();
+  }
+
+  private async setupDatabase(): Promise<void> {
+    await database.connect();
   }
 
   private middlewares(): void {
@@ -44,7 +50,7 @@ export default class SetupServer {
   }
 
   public async close(): Promise<void> {
-    console.log('close database...here');
+    await database.close();
     if (this.server) {
       await new Promise<void>((resolve, reject) => {
         this.server?.close(err => {
