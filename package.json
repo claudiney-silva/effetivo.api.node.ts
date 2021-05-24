@@ -1,7 +1,7 @@
 {
   "name": "app-site-api-node-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Website project on Node, TypeScript, Mongoose, ESLint, Prettier and Jest.",
   "main": "index.js",
   "scripts": {
     "start:dev": "ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
@@ -12,9 +12,17 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node",
+    "typescript",
+    "mongoose",
+    "eslint",
+    "prettier",
+    "jest",
+    "passport"
+  ],
+  "author": "Claudiney Calixto da Silva",
+  "license": "MIT",
   "devDependencies": {
     "@types/config": "0.0.38",
     "@types/cors": "^2.8.10",
@@ -48,5 +56,8 @@
     "mongoose": "^5.12.11",
     "pino": "^6.11.3",
     "ts-jest": "^26.5.5"
+  },
+  "engines": {
+    "node": "14.16.x"
   }
 }
