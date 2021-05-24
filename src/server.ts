@@ -1,7 +1,9 @@
 import express, { Application } from 'express';
 import * as http from 'http';
 import cors from 'cors';
+import expressPino from 'express-pino-logger';
 import routes from './routes';
+import logger from './loaders/logger';
 
 export default class SetupServer {
   private server?: http.Server;
@@ -26,7 +28,7 @@ export default class SetupServer {
   private middlewares(): void {
     // Body parsing Middleware
     this.app.use(cors({ origin: '*', optionsSuccessStatus: 200 }));
-    // this.app.use(expressPino({ logger }));
+    this.app.use(expressPino({ logger }));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
@@ -37,8 +39,7 @@ export default class SetupServer {
 
   public start(): void {
     this.server = this.app.listen(this.port, (): void => {
-      console.log(`Connected successfully on port ${this.port}`);
-      // logger.info('Server listening on port: ' + this.port);
+      logger.info(`Server listening on port: ${this.port}`);
     });
   }
 

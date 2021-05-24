@@ -1,0 +1,31 @@
+{
+  "App": {
+    "version": "v0.0.1",
+    "port": 3000,
+    "url": "http://localhost",
+    "database": {
+      "mongoUrl": "mongodb://localhost:27017/site-app"
+    },
+    "auth": {
+      "token": {
+        "key": "secret",
+        "expiresIn": "60 * 60 * 24"
+      },
+      "refreshToken": {
+        "key": "something",
+        "expiresIn": "60 * 60 * 24 * 7"
+      },
+      "authErrorsLimit": 3
+    },
+    "passport": {
+      "google": {
+        "clientId": "81483236310-j50jcb9v374tnlh1rp8tj0p48ccdugvk.apps.googleusercontent.com",
+        "clientSecret": "ccabRaI_uC8I7eMjHEb_fEcC"
+      }
+    },
+    "logger": {
+      "enabled": true,
+      "level": "info"
+    }
+  }
+}

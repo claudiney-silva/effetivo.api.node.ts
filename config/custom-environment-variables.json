@@ -1,0 +1,26 @@
+{
+  "App": {
+    "port": "PORT",
+    "mode": "NODE_ENV",
+    "url": "BASE_URL",
+    "database": {
+      "mongoUrl": "MONGODB_URL"
+    },
+    "auth": {
+      "token": {
+        "key": "JWT_TOKEN_SECRET_KEY",
+        "expiresIn": "60 * 60 * 24"
+      },
+      "refreshToken": {
+        "key": "JWT_REFRESH_TOKEN_SECRET_KEY",
+        "expiresIn": "60 * 60 * 24 * 7"
+      }
+    },
+    "passport": {
+      "google": {
+        "clientId": "GOOGLE_OAUTH_CLIENT_ID",
+        "clientSecret": "GOOGLE_OAUTH_CLIENT_SECRET"
+      }
+    }
+  }
+}
