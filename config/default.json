@@ -1,28 +1,7 @@
 {
   "App": {
     "version": "v0.0.1",
-    "port": 3000,
     "url": "http://localhost",
-    "database": {
-      "mongoUrl": "mongodb+srv://effetivo-site:BhXtjUjzaRht3VQO@effetivo-site-cluster.lovuw.mongodb.net/db-site?retryWrites=true&w=majority"
-    },
-    "auth": {
-      "token": {
-        "key": "secret",
-        "expiresIn": "60 * 60 * 24"
-      },
-      "refreshToken": {
-        "key": "something",
-        "expiresIn": "60 * 60 * 24 * 7"
-      },
-      "authErrorsLimit": 3
-    },
-    "passport": {
-      "google": {
-        "clientId": "clientId",
-        "clientSecret": "clientSecret"
-      }
-    },
     "logger": {
       "enabled": true,
       "level": "info"

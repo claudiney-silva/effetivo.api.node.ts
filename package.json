@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
     "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/index.js",
+    "start:local": "dotenv -e .env -- ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -24,6 +25,7 @@
     "@types/pino": "^6.3.8",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
