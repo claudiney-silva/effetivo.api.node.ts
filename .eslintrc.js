@@ -40,8 +40,7 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'class-methods-use-this': 'off',
-    // 'no-useless-constructor': 'off',
-    // '@typescript-eslint/no-useless-constructor': ['error'],
+    'import/prefer-default-export': 'off',
   },
   settings: {
     'import/parsers': {
