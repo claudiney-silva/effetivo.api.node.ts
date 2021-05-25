@@ -116,11 +116,24 @@
  *     example: Something went wrong
  */
 
-import { Router } from 'express';
+import config from 'config';
+import { time } from '@src/util/time';
+import { Request, Response, Router } from 'express';
 import { router as usersRoute } from '@src/controllers/users';
 
 const routes = Router();
 
-routes.use('/users', usersRoute);
+routes.get('/api', (req: Request, res: Response): Response => {
+  const mode = process.env.NODE_ENV || 'development';
+  const version = config.get<string>('App.version');
+  return res.send({
+    mode,
+    utc: time.getDateUtc(),
+    unix: time.getDateUnix(),
+    version,
+  });
+});
+
+routes.use('/api/users', usersRoute);
 
 export default routes;

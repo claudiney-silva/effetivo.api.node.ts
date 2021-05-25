@@ -1,18 +1,16 @@
+const { resolve } = require('path');
+const root = resolve(__dirname);
+
 module.exports = {
-  preset: 'ts-jest',
+  rootDir: root,
+  displayName: 'UNIT',
+  testMatch: ['<rootDir>/src/**/*.test.ts'],
   testEnvironment: 'node',
-  coverageDirectory: 'coverage',
-  collectCoverageFrom: ['src/**/*.{js,ts}'],
-  coverageThreshold: {
-    global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0,
-    },
-  },
+  clearMocks: true,
+  preset: 'ts-jest',
   moduleNameMapper: {
-    'src/(.*)': '<rootDir>/src/$1',
+    '@src/(.*)': '<rootDir>/src/$1',
+    '@test/(.*)': '<rootDir>/test/$1',
   },
   moduleDirectories: ['node_modules', 'src'],
   testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],

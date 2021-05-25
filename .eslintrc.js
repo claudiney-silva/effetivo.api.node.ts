@@ -41,6 +41,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   settings: {
     'import/parsers': {

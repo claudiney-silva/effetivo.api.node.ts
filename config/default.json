@@ -2,6 +2,14 @@
   "App": {
     "version": "v0.0.1",
     "url": "http://localhost",
+    "auth": {
+      "token": {
+        "expiresIn": "60 * 60 * 24"
+      },
+      "refreshToken": {
+        "expiresIn": "60 * 60 * 24 * 7"
+      }
+    },
     "logger": {
       "enabled": true,
       "level": "info"

@@ -8,12 +8,10 @@
     },
     "auth": {
       "token": {
-        "key": "JWT_TOKEN_SECRET_KEY",
-        "expiresIn": "60 * 60 * 24"
+        "key": "JWT_TOKEN_SECRET_KEY"
       },
       "refreshToken": {
-        "key": "JWT_REFRESH_TOKEN_SECRET_KEY",
-        "expiresIn": "60 * 60 * 24 * 7"
+        "key": "JWT_REFRESH_TOKEN_SECRET_KEY"
       }
     },
     "passport": {
