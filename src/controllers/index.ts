@@ -119,6 +119,7 @@
 import config from 'config';
 import { time } from '@src/util/time';
 import { Request, Response, Router } from 'express';
+import { router as adminRoute } from '@src/controllers/admin';
 import { router as usersRoute } from '@src/controllers/users';
 
 const routes = Router();
@@ -134,6 +135,7 @@ routes.get('/api', (req: Request, res: Response): Response => {
   });
 });
 
+routes.use('/api/admin', adminRoute);
 routes.use('/api/users', usersRoute);
 
 export default routes;
