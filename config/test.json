@@ -1,7 +1,7 @@
 {
   "App": {
     "database": {
-      "mongoUrl": "mongodb://localhost:27017/site-test"
+      "mongoUrl": "mongodb://localhost:27017/site-db-test"
     },
     "logger": {
       "enabled": false

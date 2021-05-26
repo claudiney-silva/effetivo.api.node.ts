@@ -9,7 +9,7 @@ import { authJwtMiddleware, NO_FORCE_EMAIL_VERIFIED } from '@src/middlewares/aut
 
 @Controller('users')
 export class UsersController {
-  @Post('create')
+  @Post('')
   @Middleware(validateMiddleware(userCreateSchema))
   @Wrapper(asyncHandler)
   public async create(req: Request, res: Response): Promise<Response> {
