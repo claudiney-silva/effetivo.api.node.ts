@@ -1,5 +1,5 @@
 {
-  "name": "app-site-api-node-ts",
+  "name": "effetivo.api.node.ts",
   "version": "1.0.0",
   "description": "Website project on Node, TypeScript, Mongoose, ESLint, Prettier and Jest.",
   "main": "index.js",
