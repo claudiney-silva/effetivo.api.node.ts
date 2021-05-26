@@ -2,7 +2,6 @@ import * as http from 'http';
 import cors from 'cors';
 import expressPino from 'express-pino-logger';
 import swaggerUI from 'swagger-ui-express';
-import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import express = require('express');
 import logger from '@src/loaders/logger';
@@ -11,16 +10,17 @@ import * as database from '@src/loaders/database';
 import * as passport from '@src/loaders/passport';
 import routes from '@src/routes';
 import errorMiddleware from '@src/middlewares/error';
-import { AuthController } from './controllers/auth';
-import { ApiController } from './controllers';
-import { AdminController } from './controllers/admin';
-import { UsersController } from './controllers/users';
 
-export default class SetupServer extends Server {
+export default class SetupServer {
   private server?: http.Server;
 
-  constructor(private port = 3000) {
-    super();
+  private port: number;
+
+  private app: Application;
+
+  constructor(port = 3000) {
+    this.port = port;
+    this.app = express();
   }
 
   public getApp(): Application {
@@ -59,7 +59,14 @@ export default class SetupServer extends Server {
   }
 
   private async setupDatabase(): Promise<void> {
-    await database.connect();
+    await database
+      .connect()
+      .then(() => {
+        console.log('Connected to the Database. Yayzow!');
+      })
+      .catch(err => {
+        console.log(`O erro: ${err}`);
+      });
   }
 
   private setupMiddlewares(): void {
@@ -85,7 +92,7 @@ export default class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    this.addControllers([new ApiController()]);
+    this.app.use(routes);
   }
 
   private setupErrorHandlers(): void {

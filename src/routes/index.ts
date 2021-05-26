@@ -1,11 +1,3 @@
-import config from 'config';
-import { ChildControllers, ClassOptions, Controller, Get } from '@overnightjs/core';
-import { Request, Response } from 'express';
-import { time } from '@src/util/time';
-import { UsersController } from './users';
-import { AuthController } from './auth';
-import { AdminController } from './admin';
-
 /**
  * @swagger
  * definitions:
@@ -124,19 +116,26 @@ import { AdminController } from './admin';
  *     example: Something went wrong
  */
 
-@Controller('api')
-@ClassOptions({ mergeParams: true })
-@ChildControllers([new UsersController(), new AuthController(), new AdminController()])
-export class ApiController {
-  @Get('')
-  public index(req: Request, res: Response): Response {
-    const mode = process.env.NODE_ENV || 'development';
-    const version = config.get<string>('App.version');
-    return res.send({
-      mode,
-      utc: time.getDateUtc(),
-      unix: time.getDateUnix(),
-      version,
-    });
-  }
-}
+import config from 'config';
+import { time } from '@src/util/time';
+import { Request, Response, Router } from 'express';
+import { router as adminRoute } from '@src/routes/admin';
+import { router as usersRoute } from '@src/routes/users';
+
+const routes = Router();
+
+routes.get('/api', (req: Request, res: Response): Response => {
+  const mode = process.env.NODE_ENV || 'development';
+  const version = config.get<string>('App.version');
+  return res.send({
+    mode,
+    utc: time.getDateUtc(),
+    unix: time.getDateUnix(),
+    version,
+  });
+});
+
+routes.use('/api/admin', adminRoute);
+routes.use('/api/users', usersRoute);
+
+export default routes;
