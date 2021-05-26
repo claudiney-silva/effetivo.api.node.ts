@@ -4,13 +4,19 @@
   "description": "Website project on Node, TypeScript, Mongoose, ESLint, Prettier and Jest.",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
-    "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/index.js",
-    "start:local": "dotenv -e .env -- ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
+    "postinstall": "npm run build",
+    "start": "node dist/src/index.js",
+    "start:local": "dotenv -e .env -- node dist/src/index.js",
+    "start:dev": "dotenv -e .env -- ts-node-dev --respawn --inspect --transpile-only -r tsconfig-paths/register ./src/index.ts",
     "build": "tsc -p tsconfig.prod.json",
-    "test": "jest",
+    "lint": "eslint ./src ./test --ext .ts",
+    "lint:fix": "eslint ./src ./test --ext .ts --fix",
+    "prettier": "prettier \"src/**/*.ts\" \"test/**/*.ts\" --check",
+    "prettier:fix": "prettier \"src/**/*.ts\" \"test/**/*.ts\" --write",
+    "test": "dotenv -e .env npm run lint && npm run lint && npm run test:unit && npm run test:functional",
+    "test:unit": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:functional": "dotenv -e .env jest --projects ./test --runInBand"
   },
   "keywords": [
     "node",
@@ -60,6 +66,7 @@
   },
   "dependencies": {
     "@types/jest": "^26.0.23",
+    "@types/module-alias": "^2.0.0",
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",
@@ -70,6 +77,7 @@
     "jest": "^26.6.3",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "mongoose": "^5.12.11",
     "node-cache": "^5.1.2",

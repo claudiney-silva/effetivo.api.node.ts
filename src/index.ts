@@ -1,6 +1,7 @@
 import config from 'config';
-import logger from './loaders/logger';
-import SetupServer from './server';
+import './util/moduleAlias';
+import logger from '@src/loaders/logger';
+import SetupServer from '@src/server';
 
 enum ExitStatus {
   Failure = 1,
