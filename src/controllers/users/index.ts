@@ -25,6 +25,6 @@ router.post(
 
     const user = userMapper.toDomainDto(dto);
 
-    return res.send(await userService.create(user));
+    return res.status(200).send(await userService.create(user));
   })
 );

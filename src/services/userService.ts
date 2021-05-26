@@ -9,7 +9,7 @@ class UserService {
     }
     await model.save();
 
-    model.password = undefined;
+    // model.password = undefined;
 
     return authService.generateAuthJwt(<User>model);
   }

@@ -4,11 +4,14 @@
     "url": "http://localhost",
     "auth": {
       "token": {
+        "key": "secret",
         "expiresIn": "60 * 60 * 24"
       },
       "refreshToken": {
+        "key": "something",
         "expiresIn": "60 * 60 * 24 * 7"
-      }
+      },
+      "authErrorsLimit": 3
     },
     "logger": {
       "enabled": true,

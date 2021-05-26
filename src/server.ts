@@ -23,6 +23,10 @@ export default class SetupServer {
     this.app = express();
   }
 
+  public getApp(): Application {
+    return this.app;
+  }
+
   public async init(): Promise<void> {
     this.setupMiddlewares();
     this.setupDocumentation();
@@ -55,7 +59,14 @@ export default class SetupServer {
   }
 
   private async setupDatabase(): Promise<void> {
-    await database.connect();
+    await database
+      .connect()
+      .then(() => {
+        console.log('Connected to the Database. Yayzow!');
+      })
+      .catch(err => {
+        console.log(`O erro: ${err}`);
+      });
   }
 
   private setupMiddlewares(): void {

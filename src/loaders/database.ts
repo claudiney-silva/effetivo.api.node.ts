@@ -9,5 +9,4 @@ export const connect = async (): Promise<Mongoose> =>
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-
 export const close = (): Promise<void> => mongoose.connection.close();
