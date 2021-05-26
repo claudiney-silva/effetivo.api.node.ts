@@ -1,4 +1,4 @@
-import { authJwtMiddleware, NO_FORCE_EMAIL_VERIFIED } from '@src/middlewares/authJwt';
+import { authJwtMiddleware } from '@src/middlewares/authJwt';
 import { roleMiddleware } from '@src/middlewares/role';
 import { Role } from '@src/models/userModel';
 import { Router, Request, Response } from 'express';

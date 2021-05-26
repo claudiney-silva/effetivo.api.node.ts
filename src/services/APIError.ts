@@ -9,6 +9,19 @@ type ApiErrorName =
   | 'Unprocessable'
   | 'TooManyRequests';
 
+export interface ApiErrorParam {
+  param?: string;
+  message: string;
+}
+
+export interface ApiError {
+  status: number;
+  error: string;
+  key?: string;
+  message?: string;
+  data?: ApiErrorParam[];
+}
+
 export const errors: Record<ApiErrorName, ApiError> = {
   Internal: { status: 500, error: 'Internal Server Error' },
   NotFound: { status: 404, error: 'Not Found' },
@@ -24,19 +37,6 @@ export const errors: Record<ApiErrorName, ApiError> = {
   Unprocessable: { status: 422, error: 'Unprocessable' },
   TooManyRequests: { status: 419, error: 'TooManyRequests' },
 };
-
-export interface ApiErrorParam {
-  param?: string;
-  message: string;
-}
-
-export interface ApiError {
-  status: number;
-  error: string;
-  key?: string;
-  message?: string;
-  data?: ApiErrorParam[];
-}
 
 export default class APIError extends Error {
   public status;

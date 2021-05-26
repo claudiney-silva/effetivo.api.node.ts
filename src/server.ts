@@ -1,8 +1,9 @@
-import express, { Application } from 'express';
 import * as http from 'http';
 import cors from 'cors';
 import expressPino from 'express-pino-logger';
 import swaggerUI from 'swagger-ui-express';
+import { Application } from 'express';
+import express = require('express');
 import logger from '@src/loaders/logger';
 import { swaggerDocs, swaggerUIOtions } from '@src/loaders/documentation';
 import * as database from '@src/loaders/database';

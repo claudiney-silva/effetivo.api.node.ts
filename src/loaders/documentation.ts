@@ -50,5 +50,5 @@ export const swaggerUIOtions = {
   explorer: false,
   customCss: '.swagger-ui .topbar { display: none }',
   customSiteTitle: 'Website App - API documentation',
-  //customfavIcon: "/assets/favicon.ico",
+  // customfavIcon: "/assets/favicon.ico",
 };

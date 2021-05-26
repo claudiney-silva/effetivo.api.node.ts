@@ -7,7 +7,7 @@ export const NO_FORCE_EMAIL_VERIFIED = false;
 
 export const authJwtMiddleware =
   (forceEmailVerified = FORCE_EMAIL_VERIFIED) =>
-  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  async (req: Partial<Request>, res: Partial<Response>, next: NextFunction): Promise<void> => {
     const authHeader = req.headers?.authorization;
 
     if (!authHeader) return next(new APIError(errors.UnauthorizedNoTokenProvided));
