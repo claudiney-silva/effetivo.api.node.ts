@@ -9,12 +9,8 @@ import logger from '@src/loaders/logger';
 import { swaggerDocs, swaggerUIOtions } from '@src/loaders/documentation';
 import * as database from '@src/loaders/database';
 import * as passport from '@src/loaders/passport';
-import routes from '@src/routes';
 import errorMiddleware from '@src/middlewares/error';
-import { AuthController } from './controllers/auth';
 import { ApiController } from './controllers';
-import { AdminController } from './controllers/admin';
-import { UsersController } from './controllers/users';
 
 export default class SetupServer extends Server {
   private server?: http.Server;
