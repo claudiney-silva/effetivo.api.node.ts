@@ -31,7 +31,7 @@ const definition = {
   },
   servers: [
     {
-      url: `${config.get('App.url')}:${config.get('App.port')}`,
+      url: `${config.get('App.url')}`,
       description: 'Server',
     },
     /*
