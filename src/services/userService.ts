@@ -36,10 +36,11 @@ class UserService {
 		return UserModel.findOne({ email: login }).select('+password');
 	}
 
-	private async findAll(): Promise<User[]> {
-		return UserModel.find({});
-	}
+
 	*/
+  public async findAll(): Promise<User[]> {
+    return UserModel.find({});
+  }
 }
 
 export const userService = new UserService();

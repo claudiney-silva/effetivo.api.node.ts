@@ -18,6 +18,7 @@ const definition = {
     },
     basePath: '/',
   },
+  security: [{ bearerAuth: [] }],
   components: {
     securitySchemes: {
       bearerAuth: {
@@ -41,7 +42,7 @@ const definition = {
 
 const swaggerJSOptions = {
   definition,
-  apis: ['**/controllers/*.ts'],
+  apis: ['**/controllers/**/**.ts'],
 };
 
 export const swaggerDocs = swaggerJSDoc(swaggerJSOptions);

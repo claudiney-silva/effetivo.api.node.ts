@@ -67,12 +67,11 @@ export default class SetupServer extends Server {
   }
 
   private async setupDocumentation(): Promise<void> {
-    /*
-	this.app.get('/swagger.json', function (req, res) {
-		res.setHeader('Content-Type', 'application/json');
-		res.send(swaggerDocs);
-	});
-	*/
+    this.app.get('/swagger.json', (req, res) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(swaggerDocs);
+    });
+
     this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs, swaggerUIOtions));
   }
 

@@ -18,7 +18,7 @@ export const validateMiddleware =
         data.push({ param, message });
       });
 
-      return next(new APIError({ ...errors.Unauthorized, message: 'Validation error', data }));
+      return next(new APIError({ ...errors.Unprocessable, message: 'Validation error', data }));
     }
 
     return next();
