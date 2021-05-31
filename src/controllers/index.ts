@@ -8,6 +8,13 @@ import { AdminController } from './admin';
 
 /**
  * @swagger
+ * tags:
+ *   name: Geral
+ *   description: Endpoints gerais
+ */
+
+/**
+ * @swagger
  * components:
  *   schemas:
  *     APIErrorSchema:
@@ -114,6 +121,45 @@ import { AdminController } from './admin';
 @ClassOptions({ mergeParams: true })
 @ChildControllers([new UsersController(), new AuthController(), new AdminController()])
 export class ApiController {
+  /**
+   * @swagger
+   * /api:
+   *   get:
+   *     summary: Retorna dados sobre a API
+   *     description: Retorna dados sobre a API
+   *     tags: [Geral]
+   *     responses:
+   *       200:
+   *         description: API em funcionamento
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 mode:
+   *                   type: string
+   *                   required: true
+   *                   description: Modo que a API esta executando
+   *                   example: production
+   *                   enum: [production, test, development]
+   *                 utc:
+   *                   type: string
+   *                   required: true
+   *                   description: Timestamp da Data/Hora do Servidor
+   *                   example: 2021-05-31T18:11:50.499Z
+   *                 unix:
+   *                   type: number
+   *                   required: true
+   *                   description: Data/Hora do Servidor em formato UNIX
+   *                   example: 1622484710
+   *                 version:
+   *                   type: string
+   *                   required: true
+   *                   description: Versão da API
+   *                   example: v0.0.1
+   *       500:
+   *         $ref: '#/definitions/error-500'
+   */
   @Get('')
   public index(req: Request, res: Response): Response {
     const mode = process.env.NODE_ENV || 'development';
