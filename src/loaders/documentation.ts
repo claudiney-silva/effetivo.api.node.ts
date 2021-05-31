@@ -1,4 +1,5 @@
 import swaggerJSDoc from 'swagger-jsdoc';
+import config from 'config';
 
 const definition = {
   openapi: '3.0.1',
@@ -18,7 +19,7 @@ const definition = {
     },
     basePath: '/',
   },
-  security: [{ bearerAuth: [] }],
+  // security: [{ bearerAuth: [] }],
   components: {
     securitySchemes: {
       bearerAuth: {
@@ -30,13 +31,15 @@ const definition = {
   },
   servers: [
     {
-      url: 'http://xxx.heroku.com/',
-      description: 'Production Server',
+      url: `${config.get('App.url')}:${config.get('App.port')}`,
+      description: 'Server',
     },
+    /*
     {
       url: 'http://localhost:3000/',
       description: 'Local server',
     },
+    */
   ],
 };
 

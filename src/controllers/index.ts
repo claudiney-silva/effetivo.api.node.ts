@@ -10,7 +10,7 @@ import { AdminController } from './admin';
  * @swagger
  * components:
  *   schemas:
- *     APIError:
+ *     APIErrorSchema:
  *       type: object
  *       properties:
  *         status:
@@ -51,47 +51,58 @@ import { AdminController } from './admin';
  *  field-id:
  *   type: string
  *   example: '5f9c723590e4da0d043f29c0'
- *  Error422:
+ *  error-422:
  *    description: Validation Error
  *    content:
  *      application/json:
  *        schema:
- *          $ref: '#/components/schemas/APIError'
+ *          $ref: '#/components/schemas/APIErrorSchema'
  *        example:
  *          status: 422
  *          error: UnprocessableError
  *          key: UNPROCESSABLE_INVALID_FIELDS
  *          message: Validation error
  *          data: [{"param":"id", "message":"Field is required"}]
- *  Error401:
+ *  error-401:
  *    description: Não Autorizado
  *    content:
  *      application/json:
  *        schema:
- *          $ref: '#/components/schemas/APIError'
+ *          $ref: '#/components/schemas/APIErrorSchema'
  *        example:
  *          status: 401
  *          error: Unauthorized
  *          key: NO_TOKEN_PROVIDED
  *          message: No token provided
  *          data: [{"param": "header/authorization","message": "not jwt token provided"}]
- *  Error404:
+ *  error-404:
  *    description: Not Found Error
  *    content:
  *      application/json:
  *        schema:
- *          $ref: '#/components/schemas/APIError'
+ *          $ref: '#/components/schemas/APIErrorSchema'
  *        example:
  *          status: 404
  *          error: NotFoundError
  *          key: NOTFOUNDERROR
  *          message: Not Found
- *  Error500:
+ *  error-429:
+ *    description: Too Many Requests
+ *    content:
+ *      application/json:
+ *        schema:
+ *          $ref: '#/components/schemas/APIErrorSchema'
+ *        example:
+ *          status: 429
+ *          error: TooManyRequests
+ *          key: TOOMANUREQUESTS
+ *          message: Too Many Requests
+ *  error-500:
  *    description: Internal Server Error
  *    content:
  *      application/json:
  *        schema:
- *          $ref: '#/components/schemas/APIError'
+ *          $ref: '#/components/schemas/APIErrorSchema'
  *        example:
  *          status: 500
  *          error: InternalServerError

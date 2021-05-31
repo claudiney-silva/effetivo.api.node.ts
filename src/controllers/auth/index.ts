@@ -19,11 +19,11 @@ import APIError, { errors } from '@src/services/APIError';
  * @swagger
  * components:
  *   schemas:
- *     AuthJwt:
+ *     AuthJwtSchema:
  *       type: object
  *       properties:
  *         user:
- *           $ref: '#/components/schemas/User'
+ *           $ref: '#/components/schemas/UserSchema'
  *         token:
  *           type: string
  *           required: true
@@ -40,7 +40,7 @@ import APIError, { errors } from '@src/services/APIError';
  * @swagger
  * components:
  *   schemas:
- *     AuthData:
+ *     AuthSchema:
  *       type: object
  *       properties:
  *         email:
@@ -69,22 +69,22 @@ export class AuthController {
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/AuthData'
+   *             $ref: '#/components/schemas/AuthSchema'
    *     responses:
    *       200:
    *         description: Autenticação com sucesso
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/AuthJwt'
+   *               $ref: '#/components/schemas/AuthJwtSchema'
    *       401:
-   *         $ref: '#/definitions/Error401'
-   *       404:
-   *         $ref: '#/definitions/Error404'
+   *         $ref: '#/definitions/error-401'
    *       422:
-   *         $ref: '#/definitions/Error422'
+   *         $ref: '#/definitions/error-422'
+   *       429:
+   *         $ref: '#/definitions/error-429'
    *       500:
-   *         $ref: '#/definitions/Error500'
+   *         $ref: '#/definitions/error-500'
    */
   @Post('')
   @Middleware(rateLimitMiddleware(3))
@@ -100,6 +100,8 @@ export class AuthController {
    * @swagger
    * /api/auth/refresh-token:
    *   post:
+   *     security:
+   *       - bearerAuth: []
    *     summary: Renovar o Token
    *     description: Renovar o Token a partir do Refresh Token
    *     tags: [Auth]
@@ -121,15 +123,17 @@ export class AuthController {
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/AuthJwt'
+   *               $ref: '#/components/schemas/AuthJwtSchema'
    *       401:
-   *         $ref: '#/definitions/Error401'
+   *         $ref: '#/definitions/error-401'
    *       404:
-   *         $ref: '#/definitions/Error404'
+   *         $ref: '#/definitions/error-404'
    *       422:
-   *         $ref: '#/definitions/Error422'
+   *         $ref: '#/definitions/error-422'
+   *       429:
+   *         $ref: '#/definitions/error-429'
    *       500:
-   *         $ref: '#/definitions/Error500'
+   *         $ref: '#/definitions/error-500'
    */
   @Post('refresh-token')
   @Middleware(rateLimitMiddleware(30))

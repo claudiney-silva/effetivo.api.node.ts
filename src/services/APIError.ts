@@ -35,7 +35,7 @@ export const errors: Record<ApiErrorName, ApiError> = {
     key: 'NO_TOKEN_PROVIDED',
   },
   Unprocessable: { status: 422, error: 'Unprocessable' },
-  TooManyRequests: { status: 419, error: 'TooManyRequests' },
+  TooManyRequests: { status: 429, error: 'TooManyRequests' },
 };
 
 export default class APIError extends Error {

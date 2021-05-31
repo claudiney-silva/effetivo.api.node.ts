@@ -17,6 +17,13 @@ export interface UserCreateDto {
   emailVerified?: boolean;
 }
 
+export interface UserUpdateDto {
+  firstName: string;
+  lastName: string;
+  password?: string;
+  emailNewsletters: boolean;
+}
+
 class UserMapper {
   public toAuthorDto(user: User): UserAuthorDto {
     const dto: UserAuthorDto = {

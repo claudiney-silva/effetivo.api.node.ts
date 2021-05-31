@@ -21,3 +21,10 @@ export const userCreateSchema = Joi.object({
   password,
   emailNewsletters,
 });
+
+export const userUpdateSchema = Joi.object({
+  firstName,
+  lastName,
+  password: Joi.string().pattern(/^[a-zA-Z0-9]{3,30}$/),
+  emailNewsletters,
+});

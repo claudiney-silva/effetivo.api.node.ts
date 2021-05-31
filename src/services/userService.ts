@@ -18,28 +18,24 @@ class UserService {
     return <User>await UserModel.findById(id).select('+meta');
   }
 
-  /*
-	private async save(user: User): Promise<User> {
-		const model = new UserModel(user);
-		return model.save();
-	}
+  public async deleteById(id: string): Promise<void> {
+    await UserModel.deleteOne({ _id: id });
+  }
 
-	private async deleteById(id: string): Promise<void> {
-		await UserModel.deleteOne({ id });
-	}
+  public async save(user: User): Promise<User> {
+    const model = new UserModel(user);
+    if (model.password) {
+      model.password = await authService.hashPassword(model.password);
+    }
+    return model.save();
+  }
 
-	private async delete(params: Partial<User>): Promise<void> {
-		await UserModel.deleteMany(params);
-	}
+  public async delete(params: Partial<User>): Promise<void> {
+    await UserModel.deleteMany(params);
+  }
 
-	private async findByLogin(login: string): Promise<User> {
-		return UserModel.findOne({ email: login }).select('+password');
-	}
-
-
-	*/
   public async findAll(): Promise<User[]> {
-    return UserModel.find({});
+    return UserModel.find({}).select('+meta');
   }
 }
 
